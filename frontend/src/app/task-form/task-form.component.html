@@ -1,0 +1,22 @@
+<div mat-dialog-title>
+    <h1>{{data ? 'Actualizar': 'Añadir'}} tarea.</h1>
+</div>
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Nueva tarea</mat-label>
+                <textarea matInput type="text" placeholder="Ej. Realizar la compra" formControlName = 'title' cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="9"></textarea>
+                <mat-hint *ngIf="campoNoValido('title')" class="form-text-hint">Campo obligatorio</mat-hint>
+            </mat-form-field>        
+        </div>
+    </div>
+    <div mat-dialog-actions class="actions">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Actualizar': 'Guardar'}}</button>
+    </div>
+</form>
+

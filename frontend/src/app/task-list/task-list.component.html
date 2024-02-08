@@ -1,0 +1,115 @@
+<!-- Barra de menu -->
+<div class="grid-container">
+    <mat-toolbar>
+        <p-breadcrumb styleClass="breadcrumb" class="max-w-full" [model]="tree" [home]="home"></p-breadcrumb>
+        <span class="example-spacer"></span>
+        <button mat-icon-button matTooltip="Cerrar todos los filtros" (click)="closeAllFilters()" *ngIf="see == true"><mat-icon >filter_alt_off</mat-icon></button>
+        <button mat-icon-button matTooltip="Filtrar tareas" [matMenuTriggerFor]="menu" *ngIf="!emptyInformation"><mat-icon >filter_alt</mat-icon></button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="titleFilterFunction()">Título</button>
+            <button mat-menu-item (click)="stateFilterFunction()">Estado</button>
+            <button mat-menu-item (click)="seeAllFilters()">Ver Todos</button>
+          </mat-menu>
+        <button mat-icon-button (click)="openAddEditForm()" matTooltip="Añadir nueva tarea"> 
+          <mat-icon >add_task</mat-icon>
+        </button>
+      </mat-toolbar>
+  </div>
+
+  
+  
+  <div class="main-body">
+    <!-- MENSAJE DE NO HAY COINCIDENCIAS -->
+    <div class="empty-info" *ngIf="emptyInformation">
+        <div class="logo-empty-info">
+            <span class="material-symbols-outlined">
+                <span class="material-symbols-outlined">
+                    info
+                </span>
+            </span>
+        </div>
+        <div class="empty-text">
+            No hay tareas para mostrar
+            <hr width=100%  size=2 noshade="noshade">
+        </div>
+    </div>
+  
+    <div class="card" *ngIf="!emptyInformation">
+      <!-- FILTROS -->
+      <div *ngIf="see == true" class="col-12" class="grid-container">
+        <ul class="advancedFilter">
+        <li *ngIf="titleFilter == true" >
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre de la tarea</mat-label>
+                    <input matInput type="text" placeholder="Ej. Realizar la compra" (input)="todoTable.filter($any($event.target).value, 'title', 'contains')">
+                </mat-form-field>
+            </li>
+            <li *ngIf="stateFilter == true">
+                <mat-form-field appearance="outline">
+                    <mat-label>Estado</mat-label>
+                    <mat-select (selectionChange)="todoTable.filter($any($event.value), 'state', 'contains')">
+                        <mat-option value="">Seleccionar</mat-option>
+                        <mat-option value="true">Completada</mat-option>
+                        <mat-option value="false">Pendiente</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </li>
+            
+        </ul>
+    </div>
+        
+        <!-- TABLA -->
+        <p-table
+            #todoTable
+            [value]="informacion"
+            [tableStyle]="{ 'min-width': '50rem' }"
+            [filterDelay]="0" 
+            dataKey="id"
+            [rows]="10"
+            [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10, 25, 50]"
+            [paginator]="true"
+            currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entradas"
+            >
+            <ng-template pTemplate="header">
+                <tr class="my-fontTH">
+                    <th>Título</th>
+                    <th style="text-align: center; height: 10%;">Estado</th>
+                   <th style="text-align: center;">Acciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-informacion>
+                <tr class="my-fontTD">
+                    <td >{{informacion.title}}</td>
+                    <td style="text-align: center;" >
+                        <mat-chip [ngStyle]="{ 'background-color': chipColor(informacion),}">
+                            {{informacion.state | yesNo}}
+                        </mat-chip>
+                        
+                        
+                    </td>
+                    <td class="td-Buttons" style="text-align: center;">
+                        <button matTooltip="Marcar como completada" mat-icon-button [ngStyle]="{'color': informacion.state==true ? 'gray' : 'green'}" (click)="markAsDoIt(informacion)" [disabled]="informacion.state==true">
+                            <mat-icon >task</mat-icon>
+                        </button>
+                      
+                        <button matTooltip="Editar tarea" mat-icon-button [ngStyle]="{'color': 'orange'}" (click)="openEditForm(informacion)">
+                            <mat-icon >edit</mat-icon>
+                        </button>
+
+                        <button matTooltip="Eliminar tarea" mat-icon-button color="warn" (click)="deleteTask(informacion.id)">
+                            <mat-icon >delete</mat-icon>
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+            
+            
+        </p-table>
+    </div>
+
+</div>
+  
+  
+
+

@@ -1,0 +1,134 @@
+.example-spacer1 {
+    margin-right: 14px;
+}
+
+.p-input-icon-left{
+    width: 100%;
+    text-align: center;
+}
+
+.my-fontTH {
+    font-weight:500; 
+    font-size: 13px;
+    width: 15px;
+}
+
+.my-fontTD {
+    font-weight:500; 
+    font-size: 13px;
+    width: 15px;
+    height: auto;
+
+}
+
+/* .advancedFilter{
+    list-style:none;
+} */
+
+.row{
+    display: flex;
+    /* flex */
+}
+
+.filterBox{
+    padding: 10px;
+}
+
+.p-inputtext{
+    padding: 5px;
+}
+
+.col-12 {
+    flex: 0 0 auto;
+    width: 100%;
+}
+.booleanFilter{
+    height: 33px;
+    width: 120px;
+    padding: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.optionSelectFilter{
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+.closeFilterButton{
+    border-radius: 16px;
+    padding: 0.25rem 0.6rem;
+    background-color: transparent;
+    color: #64748B;
+    border-color: transparent
+}
+
+.advancedFilter {
+    list-style:none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap:9px;
+    grid-auto-rows: 71px;
+}
+
+:host ::ng-deep{
+    .breadcrumb.p-breadcrumb{
+        background: #ffffff00;
+        border: 0px;
+        padding: 1rem;
+
+    }
+}
+
+.td-Buttons{
+    width: 180px;
+
+}
+    
+.logo-empty-info{
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 90px;
+    width: 90px;
+    background-color: #3B82F6;
+    border-radius: 5px;
+}
+
+.empty-info{
+    border-radius: 6px;
+    width: 100%;
+    height: 110px;
+    background-color: whitesmoke;
+    display: flex;
+}
+
+.empty-text{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 100%;
+}
+
+/* Para poner el color del texto de la chip en blanco */
+.mat-mdc-standard-chip {
+--mdc-chip-label-text-color: #fff;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 9,
+    'wght' 300,
+    'GRAD' 60,
+    'opsz' 9;
+    font-size: 90px;
+    color: white;
+  }
+
+
+  .filter-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .my-fontTD td {
+    white-space: pre-wrap;
+}
+
