@@ -1,27 +1,18 @@
-# Frontend
+# Aplicación de tareas basado en Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
+## Descripción
 
-## Development server
+Frontend para la app de tareas y se basa en: 
+* Angular 17.0.6
+* NPM 9.2.0
+* NODE v18.13.0
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### 1. Instalar las dependencias. 
+```bash
+$ npm install
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Correr el servidor
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Utilice el comando `ng serve` para correr el servidor en modo desarrollo. Abre un navegador en la dirección `http://localhost:4200/`. La aplicación automáticamente se recargará si encuentra algún cambio en el código fuente.
